@@ -1,29 +1,30 @@
-### Web 2.0 Final Week Plan
+Web 2.0 Final Week Plan
+-------------------------------
 
-## Backend
-# 6th Jan
+# Backend
+## 6th Jan
 - Endpoints
 
-# 8th Jan
+## 8th Jan
 - Authentication (GitHub)
 
-# 10th Jan
+## 10th Jan
 - DB
 - Final Touches
 
-## Frontend
+# Frontend
 
-# 6th Jan
+## 6th Jan
 - GUI (Om)
  
-# 8th Jan
+## 8th Jan
 - Requests
 
-# 10th Jan
+## 10th Jan
 - CSS
 - Final Touches
 
-## Presentation
-# 10th Jan
+# Presentation
+## 10th Jan
 - Finalize Report
 - Presentation Rehearsal
