@@ -26,10 +26,10 @@ public class Project {
     @NotEmpty
     private String description;
 
-//    @OneToMany(cascade=CascadeType.ALL)
-//    @JoinColumn(name="PROJECT_ID")
-//    @OrderBy
-//    private Set<Feature> features;
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="PROJECT_ID")
+    @OrderBy
+    private Set<Feature> features;
 
     // Empty constructor
     // For JPA
@@ -60,11 +60,11 @@ public class Project {
         this.description = description;
     }
 
-//    public Set<Feature> getFeatures() {
-//        return features;
-//    }
-//
-//    public void setFeatures(Set<Feature> features) {
-//        this.features = features;
-//    }
+    public Set<Feature> getFeatures() {
+        return features;
+    }
+
+    public void setFeatures(Set<Feature> features) {
+        this.features = features;
+    }
 }

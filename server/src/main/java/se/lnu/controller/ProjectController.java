@@ -3,12 +3,10 @@ package se.lnu.controller;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import se.lnu.domain.Project;
+import se.lnu.exception.ResourceNotFoundException;
 import se.lnu.repository.ProjectRepository;
 
 import javax.inject.Inject;
@@ -23,24 +21,62 @@ public class ProjectController {
     @Inject
     ProjectRepository projectRepository;
 
+    // Get one
+    @RequestMapping(value="/projects/{projectId}", method=RequestMethod.GET)
+    public ResponseEntity<?> getProject(@PathVariable Long projectId) {
+        verifyProject(projectId);
+        Project p = projectRepository.findOne(projectId);
+        return new ResponseEntity<> (p, HttpStatus.OK);
+    }
+
+
     // Get all
     @RequestMapping(value="/projects", method= RequestMethod.GET)
-    public ResponseEntity<Iterable<Project>> getAllPolls() {
+    public ResponseEntity<Iterable<Project>> getAllProjects() {
         Iterable<Project> allProjects = projectRepository.findAll();
         return new ResponseEntity<>(allProjects, HttpStatus.OK);
     }
 
+
     // Create project
     @RequestMapping(value="/projects", method=RequestMethod.POST)
-    public ResponseEntity<?> createPoll(@RequestBody Project project) {
+    public ResponseEntity<?> createProject(@RequestBody Project project) {
         project = projectRepository.save(project);
 
         // Set the location header for the newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
-        URI newPollUri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(project.getId()).toUri();
-        responseHeaders.setLocation(newPollUri);
+        URI newProjectUri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(project.getId()).toUri();
+        responseHeaders.setLocation(newProjectUri);
 
         return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
+    }
+
+
+    // TODO: UPDATE NOT WORKING
+    // Update project
+    @RequestMapping(value="/projects/{projectId}", method=RequestMethod.PUT)
+    public ResponseEntity<?> updateProject(@RequestBody Project project, @PathVariable Long projectId) {
+        // Save the entity
+        verifyProject(projectId);
+        Project p = projectRepository.save(project);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    // Delete project
+    @RequestMapping(value="/projects/{projectId}", method=RequestMethod.DELETE)
+    public ResponseEntity<?> deleteProject(@PathVariable Long projectId) {
+        projectRepository.delete(projectId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    // Verify that project exists
+    protected void verifyProject(Long projectId) throws ResourceNotFoundException {
+        Project p = projectRepository.findOne(projectId);
+        if(p == null) {
+            throw new ResourceNotFoundException("Project with id " + projectId + " not found");
+        }
     }
 
 }
