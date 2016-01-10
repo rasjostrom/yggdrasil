@@ -1,3 +1,4 @@
 angular.module('yggdrasil', [
-  'ngMaterial',
+    'ngMaterial',
+    'ngMessages',
   'yggdrasil.controllers']);

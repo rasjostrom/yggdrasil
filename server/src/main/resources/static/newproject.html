@@ -1,0 +1,41 @@
+<md-dialog aria-label=""  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Create New Project</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+	<form name="projectForm">
+	  <md-input-container class="md-block">
+            <label>Project Title</label>
+            <input md-maxlength="30" ng-model="project.projectTitle" required>
+            <!-- <div ng-messages="projectForm.description.$error"> -->
+            <!--   <div ng-message="required">This is required.</div> -->
+            <!--   <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div> -->
+            <!-- </div> -->
+	  </md-input-container>
+	  <md-input-container class="md-block">
+            <label>Description</label>
+	    <textarea ng-model="project.description" ng-minlength=10> </textarea>
+        <!-- <input md-maxlength="30" required="" name="description" ng-model="project.description"> -->
+        <!-- <div ng-messages="projectForm.description.$error"> -->
+        <!--   <div ng-message="required">This is required.</div> -->
+        <!--   <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div> -->
+      </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      
+      <md-button ng-click="closeDialog()">
+	Cancel
+      </md-button>
+      <md-button ng-click="create(project)" style="margin-right:20px;">
+	Create
+      </md-button>
+    </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -16,16 +16,24 @@
 
 <body ng-app="yggdrasil" layout="row" ng-cloak>
 
-    <md-sidenav layout="column" class="sidenav1" md-is-locked-open='true'>
+  <md-sidenav layout="column" class="sidenav1" md-is-locked-open='true' flex="15">
+    
+    <div ng-controller="sidenavCtrl as ctrl">
       
-      <div ng-controller="sidenavCtrl as ctrl">
-        <!-- Project list here -->
-        
-        <md-button ng-click="showDialog($event)" class="md-raised">
-          New Project
-        </md-button>
+      <md-toolbar flex="100">
+	<div class="md-toolbar-tools">
+          <h2><span>Yggdrasil</span></h2>
+	</div>
+      </md-toolbar>
+      
+      <!-- Project list here -->
+      <div style="align: center;">
+      <md-button ng-click="showDialog($event)" class="md-raised">
+        New Project
+      </md-button>
       </div>
-    </md-sidenav>
+    </div>
+  </md-sidenav>
 
     <md-content flex layout="column">
       <div layout="row" layout-padding layout-margin layout-fill style="min-height: 60%; max-height: 75%;">

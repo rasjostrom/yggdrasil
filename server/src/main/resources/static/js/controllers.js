@@ -17,12 +17,21 @@ angular.module('yggdrasil.controllers', [])
       parent: parentEl,
       targetEvent: $event,    //make the dialog appear to open from the location of the button
       controller: DialogController,
-      templateUrl: 'test.html', // templates not working yet
+      templateUrl: 'newproject.html',
     });
   }
 
   function DialogController($scope, $mdDialog) {
-    $scope.closeDialog = function() {
+      $scope.project = {
+	  projectTitle: ' ',
+	  description: ' '
+      };
+      
+      $scope.create = function(project) {
+	  console.log(project.projectTitle);
+	  console.log(project.description);
+      }
+      $scope.closeDialog = function() {
       $mdDialog.hide();
     }
   }
