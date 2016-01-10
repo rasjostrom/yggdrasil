@@ -1,16 +1,24 @@
 angular.module('yggdrasil.controllers', [])
 
 .controller('sidenavCtrl', function($scope, $http, $mdDialog) {
-  $http.get('resource/').success(function(data) {
-    $scope.greeting = data;
-  })
+    var allProjects = [];
+    
+    $http({
+	method: 'GET',
+	url: '/projects'
+    }).then(function successCallback(response) {
+	$scope.allProjects = response.data;
+	console.log(allProjects);
+    }, function errorCallback(response) {
+	console.log("Error fetching data from DB.");
+    });
 
   $scope.test = function() {
     console.log("presssss");
   };
 
+   
   $scope.showDialog = showDialog;
-
   function showDialog($event) {
     var parentEl = angular.element(document.body);
     $mdDialog.show({
@@ -21,7 +29,7 @@ angular.module('yggdrasil.controllers', [])
     });
   }
 
-    function DialogController($scope, $mdDialog, $http) {
+    function DialogController($scope, $mdDialog, $http, $window) {
       $scope.project = {
 	  title: ' ',
 	  description: ' '
@@ -30,8 +38,15 @@ angular.module('yggdrasil.controllers', [])
       $scope.create = function(project) {
 	  console.log(project.title);
 	  console.log(project.description);
-	  $http.post('/projects', project);
+	  $http.post('/projects', project).then(function successCallback(response) {
+	      $window.location.reload();
+	      $mdDialog.hide();
+	      
+	  }, function errorCallback(response) {
+	      console.log("Error while creating project.");
+	  });
       }
+	
       $scope.closeDialog = function() {
       $mdDialog.hide();
     }
