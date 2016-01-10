@@ -31,6 +31,11 @@ public class Project {
     @OrderBy
     private Set<Feature> features;
 
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="PROJECT_ID")
+    @OrderBy
+    private Set<Comment> comments;
+
     // Empty constructor
     // For JPA
     public Project() {
@@ -66,5 +71,13 @@ public class Project {
 
     public void setFeatures(Set<Feature> features) {
         this.features = features;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }

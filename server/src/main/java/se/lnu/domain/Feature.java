@@ -1,5 +1,8 @@
 package se.lnu.domain;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -17,6 +20,10 @@ public class Feature {
 
     @Column(name="DESCRIPTION")
     private String description;
+
+    @Column(name="DONE", columnDefinition="char(3)")
+    @Type(type="yes_no")
+    private boolean status;
 
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="FEATURE_ID")
