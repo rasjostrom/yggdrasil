@@ -9,8 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import se.lnu.domain.Feature;
+import se.lnu.domain.Issue;
 import se.lnu.domain.Project;
 import se.lnu.exception.ResourceNotFoundException;
+import se.lnu.repository.FeatureRepository;
+import se.lnu.repository.IssueRepository;
 import se.lnu.repository.ProjectRepository;
 
 
@@ -22,6 +26,12 @@ public class ProjectController {
 
     @Inject
     ProjectRepository projectRepository;
+
+    @Inject
+    FeatureRepository featureRepository;
+
+    @Inject
+    IssueRepository issueRepository;
 
     // Get one
     @RequestMapping(value="/projects/{projectId}", method=RequestMethod.GET)
@@ -56,11 +66,15 @@ public class ProjectController {
 
     // TODO: UPDATE NOT WORKING
     // Update project
+    // This is the most ugly function that i have ever written
+    // I deserve to burn in hell for this
     @RequestMapping(value="/projects/{projectId}", method=RequestMethod.PUT)
     public ResponseEntity<?> updateProject(@RequestBody Project project, @PathVariable Long projectId) {
-        // Save the entity
+        // Verify that it exists
         verifyProject(projectId);
-        Project p = projectRepository.save(project);
+        projectRepository.delete(projectId);
+        project.setId(projectId);
+        projectRepository.save(project);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
