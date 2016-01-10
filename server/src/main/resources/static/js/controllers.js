@@ -20,6 +20,8 @@ angular.module('yggdrasil.controllers', [])
 
     $scope.displayProject = function(project) {
 	$scope.currentProject.title = project.title;
+	$scope.currentProject.description = project.description;
+	$scope.currentProject.features = project.features;
 	console.log(project);
     };
    
@@ -37,7 +39,8 @@ angular.module('yggdrasil.controllers', [])
     function DialogController($scope, $mdDialog, $http, $window) {
       $scope.project = {
 	  title: ' ',
-	  description: ' '
+	  description: ' ',
+	  features: []
       };
       
       $scope.create = function(project) {

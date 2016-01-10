@@ -39,23 +39,34 @@
     <div layout="row" layout-padding layout-margin layout-fill style="min-height: 60%; max-height: 75%;">
       
       <md-content class="project-info-box" layout="column" flex="40">
-        <pre> <h2 ng-bind="currentProject.title"> </h2> </pre>
-	<md-divider></md-divider>
-	<pre> <p ng-bind="currentProject.description"> </p> </pre>
+        <pre>
+	  <h2 ng-bind="currentProject.title"> </h2> 
+	  <md-divider></md-divider>
+	  <p ng-bind="currentProject.description"> </p>
+	</pre>
       </md-content>
       
       <md-content class="features-box" layout="column" flex="35">
         <md-list ng-cloak>
 	  <md-subheader class="md-no-sticky">Features</md-subheader>
+	  <md-divider></md-divider>
 	  <md-list-item ng-repeat="feature in currentProject.features">
 	    <p> {{ feature.title }} </p>
 	    <md-checkbox class="md-secondary" ng-model="feature.complete" style="color: green"></md-checkbox>
 	  </md-list-item>
-	  <md-divider></md-divider>
+	</md-list>
       </md-content>
       
       <md-content class="issues-box" layout="column" flex="25">
-        <div>Issues Box Box</div>
+        <md-list ng-cloak>
+	  <md-subheader class="md-no-sticky">Issues</md-subheader>
+	  <md-divider></md-divider>
+	  <md-list-item>
+	    <p> dummy issue </p>
+	    <md-checkbox class="md-secondary"></md-checkbox>
+	  </md-list-item>
+	</md-list>
+	
       </md-content>
     </div>
     <div class="comment-box" flex layout="row">
