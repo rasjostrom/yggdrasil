@@ -17,7 +17,7 @@ angular.module('yggdrasil.controllers', [])
       parent: parentEl,
       targetEvent: $event,    //make the dialog appear to open from the location of the button
       controller: DialogController,
-      templateUrl: 'newproject.html', // templates not working yet
+      templateUrl: 'test.html', // templates not working yet
     });
   }
 
