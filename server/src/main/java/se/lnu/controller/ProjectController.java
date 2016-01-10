@@ -1,16 +1,18 @@
 package se.lnu.controller;
 
+import javax.inject.Inject;
+import java.net.URI;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 import se.lnu.domain.Project;
 import se.lnu.exception.ResourceNotFoundException;
 import se.lnu.repository.ProjectRepository;
 
-import javax.inject.Inject;
-import java.net.URI;
 
 /**
  * Created by nils on 09/01/16.
