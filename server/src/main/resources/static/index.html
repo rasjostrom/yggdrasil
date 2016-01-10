@@ -18,14 +18,13 @@
 
   <md-sidenav layout="column" class="sidenav1" md-is-locked-open='true' flex="15">
   
-    <h2><span>Yggdrasil</span></h2>
+    <h2>Yggdrasil</h2>
  
     <md-divider></md-divider>
     <md-list ng-cloak>
       <md-subheader class="md-no-sticky">Your Projects</md-subheader>
-      <md-list-item ng-repeat="project in allProjects" ng-click="test()">
+      <md-list-item ng-repeat="project in allProjects" ng-click="displayProject(project)">
 	<p>{{ project.title }}</p>
-	<md-icon md-svg-icon="communication:messenger" ng-click="doSecondaryAction($event)" aria-label="Open Chat" class="md-secondary md-hue-3" ng-class="{'md-primary': person.newMessage}"></md-icon>
       </md-list-item>
     </md-list>
     
@@ -40,11 +39,21 @@
     <div layout="row" layout-padding layout-margin layout-fill style="min-height: 60%; max-height: 75%;">
       
       <md-content class="project-info-box" layout="column" flex="40">
-        <div> General Info Box</div>
+        <pre> <h2 ng-bind="currentProject.title"> </h2> </pre>
+	<md-divider></md-divider>
+	<pre> <p ng-bind="currentProject.description"> </p> </pre>
       </md-content>
+      
       <md-content class="features-box" layout="column" flex="35">
-        <div> Features Box</div>
+        <md-list ng-cloak>
+	  <md-subheader class="md-no-sticky">Features</md-subheader>
+	  <md-list-item ng-repeat="feature in currentProject.features">
+	    <p> {{ feature.title }} </p>
+	    <md-checkbox class="md-secondary" ng-model="feature.complete" style="color: green"></md-checkbox>
+	  </md-list-item>
+	  <md-divider></md-divider>
       </md-content>
+      
       <md-content class="issues-box" layout="column" flex="25">
         <div>Issues Box Box</div>
       </md-content>

@@ -2,6 +2,11 @@ angular.module('yggdrasil.controllers', [])
 
 .controller('sidenavCtrl', function($scope, $http, $mdDialog) {
     var allProjects = [];
+
+    $scope.currentProject = {title: 'Yggdrasil',
+			     description: 'Description here',
+			     features: [{title: "List all Projects", complete: true},
+					{title: "Comment on project wall", complete: false}]};
     
     $http({
 	method: 'GET',
@@ -13,10 +18,10 @@ angular.module('yggdrasil.controllers', [])
 	console.log("Error fetching data from DB.");
     });
 
-  $scope.test = function() {
-    console.log("presssss");
-  };
-
+    $scope.displayProject = function(project) {
+	$scope.currentProject.title = project.title;
+	console.log(project);
+    };
    
   $scope.showDialog = showDialog;
   function showDialog($event) {
