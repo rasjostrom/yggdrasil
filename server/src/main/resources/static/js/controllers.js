@@ -21,15 +21,16 @@ angular.module('yggdrasil.controllers', [])
     });
   }
 
-  function DialogController($scope, $mdDialog) {
+    function DialogController($scope, $mdDialog, $http) {
       $scope.project = {
-	  projectTitle: ' ',
+	  title: ' ',
 	  description: ' '
       };
       
       $scope.create = function(project) {
-	  console.log(project.projectTitle);
+	  console.log(project.title);
 	  console.log(project.description);
+	  $http.post('/projects', project);
       }
       $scope.closeDialog = function() {
       $mdDialog.hide();
