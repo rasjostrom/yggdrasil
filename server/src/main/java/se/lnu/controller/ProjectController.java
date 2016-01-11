@@ -64,16 +64,12 @@ public class ProjectController {
     }
 
 
-    // TODO: UPDATE NOT WORKING
-    // Update project
     // This is the most ugly function that i have ever written
     // I deserve to burn in hell for this
     @RequestMapping(value="/projects/{projectId}", method=RequestMethod.PUT)
     public ResponseEntity<?> updateProject(@RequestBody Project project, @PathVariable Long projectId) {
         // Verify that it exists
         verifyProject(projectId);
-        projectRepository.delete(projectId);
-        project.setId(projectId);
         projectRepository.save(project);
         return new ResponseEntity<>(HttpStatus.OK);
     }
