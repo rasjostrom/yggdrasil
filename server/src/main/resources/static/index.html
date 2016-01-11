@@ -16,23 +16,19 @@
 
 <body ng-app="yggdrasil" layout="row" ng-controller="sidenavCtrl as ctrl" ng-cloak>
 
-  <md-sidenav layout="column" class="sidenav1" md-is-locked-open='true' flex="15">
-    <div ng-include="'sidenav.html'"></div>
+  <md-sidenav layout="column" class="sidenav1" md-is-locked-open='true' flex="15" ng-include="'sidenav.html'">
   </md-sidenav>
 
   <md-content flex layout="column">
     <div layout="row" layout-padding layout-margin layout-fill style="min-height: 60%; max-height: 75%;">
       
-      <md-content class="project-info-box" layout="column" flex="40">
-	<div ng-include="'projectRoot.html'"></div>
+      <md-content class="project-info-box" layout="column" flex="40" ng-include="'projectRoot.html'">
       </md-content>
       
-      <md-content class="features-box" layout="column" flex="35">
-        <div ng-include="'features.html'"></div>
+      <md-content class="features-box" layout="column" flex="35" ng-include="'features.html'">
       </md-content>
       
-      <md-content class="issues-box" layout="column" flex="25">
-	<div ng-include="'issues.html'"></div>
+      <md-content class="issues-box" layout="column" flex="25" ng-include="'issues.html'">
       </md-content>
     </div>
     
