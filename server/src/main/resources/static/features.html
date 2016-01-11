@@ -1,24 +1,49 @@
-<form name="newFeatureForm">
-  <md-input-container class="md-block" layout="row">
-    <div flex>
-      <label>New Feature</label>
-      <input md-maxlength="50" ng-model="feature" required="required">
-    </div>
-    <div flex>
-      <md-button class="md-raised" ng-click="addFeature(feature)">Add</md-button>
-    </div>
-  </md-input-container>
-</form>
+<md-tabs class="" md-selected="data.selectedIndex" md-align-tabs="bottom" flex="" >
+  <md-tab id="tab1">
 
-<md-subheader class="md-no-sticky">
-  Features
-</md-subheader>
+    <md-tab-body>
+      <md-subheader class="md-no-sticky">
+	Features
+      </md-subheader>
+      <md-divider></md-divider>
 
-<md-divider></md-divider>
-<md-content class="features-box" flex="" layout-padding="">
-  <md-list ng-cloak>
-    <md-list-item ng-repeat="feature in currentProject.features" ng-click="displayIssues(feature)">
-      <p> {{ feature.description }} </p>
-    </md-list-item>
-  </md-list>
-</md-content>
+      <md-content class="features-box" flex="" layout-padding="">
+	<md-list ng-cloak>
+	  <md-list-item ng-repeat="feature in currentProject.features" ng-click="displayIssues(feature)">
+	    <p> {{ feature.description }} </p>
+	  </md-list-item>
+	</md-list>
+      </md-content>
+    </md-tab-body>
+  </md-tab>
+  
+  <md-tab id="tab2">
+
+    <md-tab-body>
+      <form name="newFeatureForm">
+	<md-input-container class="md-block" layout="row">
+	  <div flex>
+	    <label>New Feature</label>
+	    <input md-maxlength="50" ng-model="feature" required="required">
+	  </div>
+	  <div flex>
+	    <md-button class="md-raised" ng-click="addFeature(feature)">Add</md-button>
+	  </div>
+	</md-input-container>
+      </form>
+      <md-subheader class="md-no-sticky">
+	Edit Features
+      </md-subheader>
+      <md-divider></md-divider>
+
+      <md-content class="features-box" flex="" layout-padding="">
+	<md-list ng-cloak>
+	  <md-list-item ng-repeat="feature in currentProject.features" ng-click="deleteFeature(feature)">
+	    <p> {{ feature.description }} </p>
+	  </md-list-item>
+	</md-list>
+      </md-content>
+      <md-divider></md-divider>
+    </md-tab-body>
+  </md-tab>
+</md-tabs>

@@ -91,7 +91,31 @@ angular.module('yggdrasil.controllers', [])
 		console.log("Error while deleting project.");
 	    });
 	};
-	
+
+	// Remove a feature
+	$scope.deleteFeature = function(feature) {
+	    for (var i =0; i < $scope.currentProject.features.length; i++)
+		if ($scope.currentProject.features[i] === feature) {
+		    console.log(feature);
+		    $scope.currentProject.features.splice(i,1);
+		    break;
+		}
+	    updateProject();
+	};
+
+	// Remove an issue
+	$scope.deleteIssue = function(issue) {
+	    var featureIndex = $scope.currentProject.features.indexOf($scope.currentFeature);
+
+	    for (var i =0; i < $scope.currentProject.features[featureIndex].issues.length; i++)
+		if ($scope.currentProject.features[featureIndex].issues[i] === issue) {
+		    console.log(issue);
+		    $scope.currentProject.features[featureIndex].issues.splice(i,1);
+		    break;
+		}
+	    
+	    updateProject();
+	};
 	// Show 'new project' dialog
 	$scope.showDialog = showDialog;
 	function showDialog($event) {
@@ -131,8 +155,8 @@ angular.module('yggdrasil.controllers', [])
 	}
 	
 	/* Tabs section*/
-	$scope.tabData = {
-	    selectedIndex: 0,
+	$scope.data = {
+	    selectedIndex: 0
 	};
 	$scope.next = function() {
 	    $scope.data.selectedIndex = Math.min($scope.data.selectedIndex + 1, 2) ;
