@@ -155,18 +155,33 @@ angular.module('yggdrasil.controllers', [])
 	}
 	
 	/* Tabs section*/
-	$scope.data = {
-	    selectedIndex: 0
+
+	$scope.projectTabIndex = 0;
+	$scope.switchProjectMode = function(index) {
+	    switch(index) {
+            case 0: $scope.projectTabIndex = 1;break;
+            case 1: $scope.projectTabIndex = 0;break;
+	    }
 	};
-	$scope.next = function() {
-	    $scope.data.selectedIndex = Math.min($scope.data.selectedIndex + 1, 2) ;
+
+	$scope.featureTabIndex = 0;
+	$scope.switchFeatureMode = function(index) {
+	    switch(index) {
+            case 0: $scope.featureTabIndex = 1;break;
+            case 1: $scope.featureTabIndex = 0;break;
+	    }
 	};
-	$scope.previous = function() {
-	    $scope.data.selectedIndex = Math.max($scope.data.selectedIndex - 1, 0);
+
+	$scope.issueTabIndex = 0;
+	$scope.switchIssueMode = function(index) {
+	    switch(index) {
+            case 0: $scope.issueTabIndex = 1;break;
+            case 1: $scope.issueTabIndex = 0;break;
+	    }
 	};
-    
+	
 	$scope.applyEdit = function () {
-	    $scope.previous();
+	    $scope.projectTabIndex = 0;
 	    updateProject();
 	};
 	

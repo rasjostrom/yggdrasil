@@ -1,6 +1,6 @@
-<md-tabs class="md-primary md-hue-1" md-selected="data.selectedIndex" md-align-tabs="bottom" flex="">
-  <md-tab id="tab1">
-    <md-tab-label>View</md-tab-label>
+<md-tabs class="" md-selected="projectTabIndex" md-align-tabs="bottom" flex="">
+  <md-tab id="projectTab1" md-on-select="switchProjectMode($index)">
+    <md-tab-label class="md-warn">View</md-tab-label>
     <md-tab-body>
       <h2 ng-bind="currentProject.title"> </h2>
       <md-divider></md-divider>
@@ -8,9 +8,10 @@
 	<p ng-bind="currentProject.description"> </p>
       </md-content>
     </md-tab-body>
+    <md-divider></md-divider>
   </md-tab>
   
-  <md-tab id="tab2">
+  <md-tab id="projectTab2"md-on-select="switchProjectMode($index)">
     <md-tab-label>Edit</md-tab-label>
     <md-tab-body>
       <md-input-container class="md-block" layout="row">

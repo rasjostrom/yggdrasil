@@ -1,6 +1,6 @@
-<md-tabs class="" md-selected="data.selectedIndex" md-align-tabs="bottom" flex="" >
-  <md-tab id="tab1">
-
+<md-tabs class="" md-selected="featureTabIndex" md-align-tabs="bottom" flex="" >
+  <md-tab id="featureTab1" md-on-select="switchFeatureMode($index)">
+    <md-tab-label>View</md-tab-label>
     <md-tab-body>
       <md-subheader class="md-no-sticky">
 	Features
@@ -17,8 +17,8 @@
     </md-tab-body>
   </md-tab>
   
-  <md-tab id="tab2">
-
+  <md-tab id="featureTab2" md-on-select="switchFeatureMode($index)">
+    <md-tab-label>Edit</md-tab-label>
     <md-tab-body>
       <form name="newFeatureForm">
 	<md-input-container class="md-block" layout="row">

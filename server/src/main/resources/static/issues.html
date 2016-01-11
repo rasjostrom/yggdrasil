@@ -1,9 +1,9 @@
-<md-tabs class="" md-selected="data.selectedIndex" md-align-tabs="bottom" flex="" >
-  <md-tab id="tab1">
-
+<md-tabs class="" md-selected="issueTabIndex" md-align-tabs="bottom" flex="" >
+  <md-tab id="issueTab1" md-on-select="switchIssueMode($index)">
+    <md-tab-label class="md-warn">View</md-tab-label>
     <md-tab-body>
       <md-subheader class="md-no-sticky">
-	Features
+	{{ currentFeature.description }}
       </md-subheader>
       <md-divider></md-divider>
 
@@ -16,12 +16,12 @@
 	  </md-list-item>
 	</md-list>
       </md-content>
-
+      <md-divider></md-divider>
     </md-tab-body>
   </md-tab>
   
-  <md-tab id="tab2">
-
+  <md-tab id="issueTab2" md-on-select="switchIssueMode($index)">
+    <md-tab-label class="md-warn">Edit</md-tab-label>
     <md-tab-body>
       <form name="newIssueForm">
 	<md-input-container class="md-block" layout="row">
