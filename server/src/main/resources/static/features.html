@@ -1,23 +1,24 @@
-<md-list ng-cloak>
+<form name="newFeatureForm">
+  <md-input-container class="md-block" layout="row">
+    <div flex>
+      <label>New Feature</label>
+      <input md-maxlength="50" ng-model="feature" required="required">
+    </div>
+    <div flex>
+      <md-button class="md-raised" ng-click="addFeature(feature)">Add</md-button>
+    </div>
+  </md-input-container>
+</form>
 
-  <form name="newFeatureForm">
-    <md-input-container class="md-block" layout="row">
-      <div flex>
-	<label>New Feature</label>
-	<input md-maxlength="50" ng-model="feature" required="required">
-      </div>
-      <div flex>
-	<md-button class="md-raised" ng-click="addFeature(feature)">Add</md-button>
-      </div>
-    </md-input-container>
-  </form>
+<md-subheader class="md-no-sticky">
+  Features
+</md-subheader>
 
-  <md-subheader class="md-no-sticky">
-    Features
-  </md-subheader>
-  
-  <md-divider></md-divider>
-  <md-list-item ng-repeat="feature in currentProject.features" ng-click="displayIssues(feature)">
-    <p> {{ feature.description }} </p>
-  </md-list-item>
-</md-list>
+<md-divider></md-divider>
+<md-content class="features-box" flex="" layout-padding="">
+  <md-list ng-cloak>
+    <md-list-item ng-repeat="feature in currentProject.features" ng-click="displayIssues(feature)">
+      <p> {{ feature.description }} </p>
+    </md-list-item>
+  </md-list>
+</md-content>

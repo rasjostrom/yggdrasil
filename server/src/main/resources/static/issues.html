@@ -1,22 +1,26 @@
-<md-list ng-cloak>
+<form name="newIssueForm">
+  <md-input-container class="md-block" layout="row">
+    <div flex>
+      <label>New Issue</label>
+      <input md-maxlength="50" ng-model="newIssue" required="required">
+    </div>
+    <div flex>
+      <md-button class="md-raised" ng-click="addIssue(newIssue)">Add</md-button>
+    </div>
+  </md-input-container>
+</form>
 
-  <form name="newIssueForm">
-    <md-input-container class="md-block" layout="row">
-      <div flex>
-	<label>New Issue</label>
-	<input md-maxlength="50" ng-model="newIssue" required="required">
-      </div>
-      <div flex>
-	<md-button class="md-raised" ng-click="addIssue(newIssue)">Add</md-button>
-      </div>
-    </md-input-container>
-  </form>
-  
-  <md-subheader class="md-no-sticky">Issues</md-subheader>
-  <md-divider></md-divider>
-  <md-list-item ng-repeat="issue in currentFeature.issues">
-    <p> {{ issue.description }} </p>
-    <md-checkbox md-no-ink class="md-primary" ng-click="toggleIssue(issue)" ng-checked="issue.status">
-    </md-checkbox>
-  </md-list-item>
-</md-list>
+<md-subheader class="md-no-sticky">
+  Issues
+</md-subheader>
+<md-divider></md-divider>
+
+<md-content class="features-box" flex="" layout-padding="">
+  <md-list ng-cloak>
+    <md-list-item ng-repeat="issue in currentFeature.issues">
+      <p> {{ issue.description }} </p>
+      <md-checkbox md-no-ink class="md-primary" ng-click="toggleIssue(issue)" ng-checked="issue.status">
+      </md-checkbox>
+    </md-list-item>
+  </md-list>
+</md-content>
