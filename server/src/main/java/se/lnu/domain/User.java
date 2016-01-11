@@ -29,7 +29,7 @@ public class User {
 
     @Column(name="PASSWORD")
     @NotEmpty
-    @JsonIgnore
+//    @JsonIgnore
     private String password;
 
     @Column(name="FIRST_NAME")
