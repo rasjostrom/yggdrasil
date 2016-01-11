@@ -5,8 +5,10 @@ angular.module('yggdrasil.controllers', [])
 
     $scope.currentProject = {title: 'Yggdrasil',
 			     description: 'Description here',
-			     features: [{title: "List all Projects", complete: true},
-					{title: "Comment on project wall", complete: false}]};
+			     features: [{description: "List all Projects", complete: true},
+					{description: "Comment on project wall", complete: false}]};
+
+    $scope.currentIssues = [];
     
     $http({
 	method: 'GET',
@@ -24,6 +26,11 @@ angular.module('yggdrasil.controllers', [])
 	$scope.currentProject.features = project.features;
 	console.log(project);
     };
+
+    $scope.displayIssues = function(issues) {
+	$scope.currentIssues = issues;
+	console.log(issues);
+    };
    
   $scope.showDialog = showDialog;
   function showDialog($event) {
@@ -40,7 +47,8 @@ angular.module('yggdrasil.controllers', [])
       $scope.project = {
 	  title: ' ',
 	  description: ' ',
-	  features: []
+	  features: [],
+	  comments: []
       };
       
       $scope.create = function(project) {
