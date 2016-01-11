@@ -1,15 +1,19 @@
-<h2>Yggdrasil</h2>
+<div style="background-color: #2c3e50;">
+<h3 style="color: cornsilk; text-align:center;" flex="">YGGDRASIL</h3>
+</div>
 
 <md-divider></md-divider>
 <md-list ng-cloak>
-  <md-subheader class="md-no-sticky">Your Projects</md-subheader>
-  <md-list-item ng-repeat="project in allProjects" ng-click="displayProject(project)">
-    <p>{{ project.title }}</p>
+  <md-subheader class="md-no-sticky" style="background-color: #34495e; color: cornsilk;">
+    Your Projects
+  </md-subheader>
+  <md-divider></md-divider>
+  <md-list-item ng-repeat="project in allProjects" ng-click="displayProject(project)" class="sideProject">
+    <p style="color: azure;">{{ project.title }}</p>
   </md-list-item>
 </md-list>
 
-<div style="align: center;">
-  <md-button ng-click="showDialog($event)" class="md-raised">
-    New Project
-  </md-button>
-</div>
+<md-button ng-click="showDialog($event)" class="md-raised" layout-align="center">
+  New Project
+</md-button>
+

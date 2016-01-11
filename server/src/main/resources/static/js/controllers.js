@@ -3,7 +3,7 @@ angular.module('yggdrasil.controllers', [])
     .controller('sidenavCtrl', function($scope, $http, $mdDialog, $window) {
 	var allProjects = [];
 	
-	$scope.currentProject = {title: 'NaN',
+	$scope.currentProject = {title: 'Project Title',
 				 description: '',
 				 features: [],
 				 comments: []};
@@ -16,7 +16,6 @@ angular.module('yggdrasil.controllers', [])
 	    url: '/projects'
 	}).then(function successCallback(response) {
 	    $scope.allProjects = response.data;
-	    console.log(allProjects);
 	}, function errorCallback(response) {
 	    console.log("Error fetching data from DB.");
 	});

@@ -2,12 +2,11 @@
   <md-tab id="issueTab1" md-on-select="switchIssueMode($index)">
     <md-tab-label class="md-warn">View</md-tab-label>
     <md-tab-body>
-      <md-subheader class="md-no-sticky">
-	{{ currentFeature.description }}
-      </md-subheader>
+      <h2 style="color: #34495e; margin-left: 1em;" flex=""> Issues  </h2>
       <md-divider></md-divider>
-
-      <md-content class="issues-box" flex="" layout-padding="">
+      <md-subheader> {{ currentFeature.description }} </md-subheader>
+      
+      <md-content class="content-box" flex="" layout-padding="">
 	<md-list ng-cloak>
 	  <md-list-item ng-repeat="issue in currentFeature.issues">
 	    <p> {{ issue.description }} </p>
@@ -16,7 +15,6 @@
 	  </md-list-item>
 	</md-list>
       </md-content>
-      <md-divider></md-divider>
     </md-tab-body>
   </md-tab>
   

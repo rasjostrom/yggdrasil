@@ -1,10 +1,11 @@
-<md-tabs class="" md-selected="projectTabIndex" md-align-tabs="bottom" flex="">
+<md-tabs class="tabs-box" md-selected="projectTabIndex" md-align-tabs="bottom" flex="">
   <md-tab id="projectTab1" md-on-select="switchProjectMode($index)">
     <md-tab-label class="md-warn">View</md-tab-label>
     <md-tab-body>
-      <h2 ng-bind="currentProject.title"> </h2>
-      <md-divider></md-divider>
-      <md-content class="project-info-box" flex="" layout-padding="">
+	<h2 ng-bind="currentProject.title" style="color: #34495e; margin-left: 1em;" flex=""> </h2>
+	<md-divider></md-divider>
+	
+      <md-content class="content-box" flex="" layout-padding="">
 	<p ng-bind="currentProject.description"> </p>
       </md-content>
     </md-tab-body>
@@ -20,7 +21,7 @@
 	  <input md-maxlength="30" ng-model="currentProject.title" required="required">
 	</div>
       </md-input-container>
-      <md-content flex="100" class="project-info-box">
+      <md-content flex="" class="content-box" layout-padding="">
 	<md-input-container class="md-block" layout="row">
 	  <div flex>
 	    <label>Project Description</label>

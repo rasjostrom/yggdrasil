@@ -1,16 +1,20 @@
 md-sidenav  {
     width: 20%;height:100%;
     padding:1em;
-    background-color: #3f3f3f;
+    background-color: #34495e;
 }
 
 md-content {
-    background-color : tan;
+    background-color : whitesmoke;
     height:100%;
     padding:20px;
 }
 
-.project-info-box {
+.tabs-box {
+    background-color: white;
+}
+
+.content-box {
     background-color:white;
 }
 
