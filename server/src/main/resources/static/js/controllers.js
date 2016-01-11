@@ -21,9 +21,7 @@ angular.module('yggdrasil.controllers', [])
     });
 
     $scope.displayProject = function(project) {
-	$scope.currentProject.title = project.title;
-	$scope.currentProject.description = project.description;
-	$scope.currentProject.features = project.features;
+	$scope.currentProject = project;
 	console.log(project);
     };
 

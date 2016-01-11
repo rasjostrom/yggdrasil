@@ -70,7 +70,7 @@
     </div>
     <div class="comment-box" flex layout="row">
       <md-content layout="column" flex style="background-color:white;">
-        Comment Section
+        <p ng-repeat="comment in currentProject.comments">{{comment.text}}</p>
       </md-content>
     </div>
   </md-content>
