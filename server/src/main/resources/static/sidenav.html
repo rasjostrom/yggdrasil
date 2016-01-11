@@ -1,0 +1,15 @@
+<h2>Yggdrasil</h2>
+
+<md-divider></md-divider>
+<md-list ng-cloak>
+  <md-subheader class="md-no-sticky">Your Projects</md-subheader>
+  <md-list-item ng-repeat="project in allProjects" ng-click="displayProject(project)">
+    <p>{{ project.title }}</p>
+  </md-list-item>
+</md-list>
+
+<div style="align: center;">
+  <md-button ng-click="showDialog($event)" class="md-raised">
+    New Project
+  </md-button>
+</div>

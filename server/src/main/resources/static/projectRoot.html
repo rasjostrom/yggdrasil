@@ -1,0 +1,39 @@
+<md-tabs class="md-primary md-hue-1" md-selected="data.selectedIndex" md-align-tabs="bottom" flex="">
+  <md-tab id="tab1">
+    <md-tab-label>View</md-tab-label>
+    <md-tab-body>
+      <h2 ng-bind="currentProject.title"> </h2>
+      <md-divider></md-divider>
+      <md-content class="project-info-box" flex="" layout-padding="">
+	<p ng-bind="currentProject.description"> </p>
+      </md-content>
+    </md-tab-body>
+  </md-tab>
+  
+  <md-tab id="tab2">
+    <md-tab-label>Edit</md-tab-label>
+    <md-tab-body>
+      <md-input-container class="md-block" layout="row">
+	<div flex>
+	  <label>Project Title</label>
+	  <input md-maxlength="30" ng-model="currentProject.title" required="required"> </textarea>
+</div>
+</md-input-container>
+<md-content flex="100" class="project-info-box">
+  <md-input-container class="md-block" layout="row">
+    <div flex>
+      <label>Project Description</label>
+      <textarea md-maxlength="200" ng-model="currentProject.description" required="required"> </textarea>
+    </div>
+  </md-input-container>
+</md-content>
+<md-divider></md-divider>
+<md-button class="md-raised" ng-click="applyEdit()">
+  Apply Changes
+</md-button>
+<md-button class="md-raised md-warn" ng-click="deleteProject(project)">
+  delete project
+</md-button>
+</md-tab-body>
+</md-tab>
+</md-tabs>

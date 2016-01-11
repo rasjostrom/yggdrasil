@@ -17,121 +17,22 @@
 <body ng-app="yggdrasil" layout="row" ng-controller="sidenavCtrl as ctrl" ng-cloak>
 
   <md-sidenav layout="column" class="sidenav1" md-is-locked-open='true' flex="15">
-  
-    <h2>Yggdrasil</h2>
- 
-    <md-divider></md-divider>
-    <md-list ng-cloak>
-      <md-subheader class="md-no-sticky">Your Projects</md-subheader>
-      <md-list-item ng-repeat="project in allProjects" ng-click="displayProject(project)">
-	<p>{{ project.title }}</p>
-      </md-list-item>
-    </md-list>
-    
-    <div style="align: center;">
-      <md-button ng-click="showDialog($event)" class="md-raised">
-        New Project
-      </md-button>
-    </div>
+    <div ng-include="'sidenav.html'"></div>
   </md-sidenav>
 
   <md-content flex layout="column">
     <div layout="row" layout-padding layout-margin layout-fill style="min-height: 60%; max-height: 75%;">
       
       <md-content class="project-info-box" layout="column" flex="40">
-	
-	<md-tabs class="md-primary md-hue-1" md-selected="data.selectedIndex" md-align-tabs="bottom" flex="">
-	  <md-tab id="tab1">
-            <md-tab-label>View</md-tab-label>
-            <md-tab-body>
-	      	<h2 ng-bind="currentProject.title"> </h2>
-		<md-divider></md-divider>
-	      	<md-content class="project-info-box" flex="" layout-padding="">
-		  <p ng-bind="currentProject.description"> </p>
-		</md-content>
-            </md-tab-body>
-	  </md-tab>
-	  
-	  <md-tab id="tab2">
-            <md-tab-label>Edit</md-tab-label>
-            <md-tab-body>
-	      <md-input-container class="md-block" layout="row">
-		  <div flex>
-		  <label>Project Title</label>
-		  <input md-maxlength="30" ng-model="currentProject.title" required="required"> </textarea>
-		  </div>
-		</md-input-container>
-	      <md-content flex="100" class="project-info-box">
-		<md-input-container class="md-block" layout="row">
-		  <div flex>
-		  <label>Project Description</label>
-		  <textarea md-maxlength="200" ng-model="currentProject.description" required="required"> </textarea>
-		  </div>
-		</md-input-container>
-	      </md-content>
-	      <md-divider></md-divider>
-	      <md-button class="md-raised" ng-click="applyEdit()">
-		Apply Changes
-	      </md-button>
-	      <md-button class="md-raised md-warn" ng-click="deleteProject(project)">
-		delete project
-	      </md-button>
-            </md-tab-body>
-	  </md-tab>
-	</md-tabs>
-	
+	<div ng-include="'projectRoot.html'"></div>
       </md-content>
       
       <md-content class="features-box" layout="column" flex="35">
-        <md-list ng-cloak>
-
-	      <form name="newFeatureForm">
-		<md-input-container class="md-block" layout="row">
-		  <div flex>
-		  <label>New Feature</label>
-		  <input md-maxlength="50" ng-model="feature" required="required">
-		  </div>
-		  <div flex>
-		    <md-button class="md-raised" ng-click="addFeature(feature)">Add</md-button>
-		  </div>
-		</md-input-container>
-	      </form>
-
-	      <md-subheader class="md-no-sticky">
-		Features
-	      </md-subheader>
-	    
-	  <md-divider></md-divider>
-	  <md-list-item ng-repeat="feature in currentProject.features" ng-click="displayIssues(feature)">
-	    <p> {{ feature.description }} </p>
-	  </md-list-item>
-	</md-list>
+        <div ng-include="'features.html'"></div>
       </md-content>
       
       <md-content class="issues-box" layout="column" flex="25">
-        <md-list ng-cloak>
-
-	  <form name="newIssueForm">
-	    <md-input-container class="md-block" layout="row">
-	      <div flex>
-		<label>New Issue</label>
-		<input md-maxlength="50" ng-model="newIssue" required="required">
-	      </div>
-	      <div flex>
-		<md-button class="md-raised" ng-click="addIssue(newIssue)">Add</md-button>
-	      </div>
-	    </md-input-container>
-	  </form>
-	  
-	  <md-subheader class="md-no-sticky">Issues</md-subheader>
-	  <md-divider></md-divider>
-	  <md-list-item ng-repeat="issue in currentFeature.issues">
-	    <p> {{ issue.description }} </p>
-	    <md-checkbox md-no-ink class="md-primary" ng-click="toggleIssue(issue)" ng-checked="issue.status">
-	    </md-checkbox>
-	  </md-list-item>
-	</md-list>
-	
+	<div ng-include="'issues.html'"></div>
       </md-content>
     </div>
     
