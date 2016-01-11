@@ -44,6 +44,7 @@
 	  <md-divider></md-divider>
 	  <p ng-bind="currentProject.description"> </p>
 	</pre>
+	<md-button class="md-primary md-primary" ng-click="deleteProject(project)"> delete project </md-button>
       </md-content>
       
       <md-content class="features-box" layout="column" flex="35">
@@ -68,6 +69,7 @@
 	
       </md-content>
     </div>
+    
     <div class="comment-box" flex layout="row">
       <md-content layout="column" flex style="background-color:white;">
         <p ng-repeat="comment in currentProject.comments">{{comment.text}}</p>
