@@ -1,7 +1,7 @@
 md-sidenav  {
     width: 20%;height:100%;
-    padding:20px;
-    background-color: #6bc7cc;
+    padding:1em;
+    background-color: #3f3f3f;
 }
 
 md-content {
@@ -26,4 +26,15 @@ md-content {
     margin-top: 2em;
     height: 20%;
     background-color:white;
+}
+.comment-message {
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+    font-size: small;
+}
+
+.sendBtn {
+    font-size: 11px;
+    padding: 2px 3px 0 3px;
+    margin: -12px 10px 3px 14px;
 }

@@ -3,10 +3,10 @@ angular.module('yggdrasil.controllers', [])
     .controller('sidenavCtrl', function($scope, $http, $mdDialog, $window) {
 	var allProjects = [];
 	
-	$scope.currentProject = {title: 'Yggdrasil',
-				 description: 'Description here',
-				 features: [{description: "List all Projects", complete: true},
-					    {description: "Comment on project wall", complete: false}]};
+	$scope.currentProject = {title: 'NaN',
+				 description: '',
+				 features: [],
+				 comments: []};
 
 	$scope.currentFeature = [];
 	
@@ -40,11 +40,10 @@ angular.module('yggdrasil.controllers', [])
 	    $http.put(putUrl, $scope.currentProject).then(function successCallback(response) {
 		console.log("update successful");
 		}, function errorCallback(response) {
-		    console.log("Error while creating project.");
+		    console.log("Error while updating project.");
 		});
 	};
 
-	
 	// Add feature to a selected project and update backend
 	$scope.addFeature = function(feature) {
 	    console.log(feature);
@@ -116,6 +115,18 @@ angular.module('yggdrasil.controllers', [])
 	    
 	    updateProject();
 	};
+
+	// Post a comment to current project
+	$scope.postComment = function(message) {
+	    var date  = new Date().toLocaleString();
+	    var msgString = "<" + date + "> " + message;
+	    var newMsg = {text: msgString};
+	    console.log(newMsg);
+	    $scope.currentProject.comments.push(newMsg);
+	    updateProject();
+	    
+	};
+	
 	// Show 'new project' dialog
 	$scope.showDialog = showDialog;
 	function showDialog($event) {

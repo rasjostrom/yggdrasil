@@ -1,0 +1,9 @@
+<md-content layout="column" flex style="background-color:white;">
+  <p ng-repeat="comment in currentProject.comments" class="comment-message">
+    {{comment.text}}
+  </p>
+</md-content>
+<div layout="row" style="max-height: 1.5em;">
+  <input type="text" ng-model="message" ng-minlength=1 ng-maxlength=300 flex="">
+  <md-button ng-click="postComment(message)" flex="5" class="md-raised sendBtn"> Send </md-button>
+</div>
