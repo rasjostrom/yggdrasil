@@ -62,14 +62,6 @@
 			<artifactId>spring-boot-starter-data-solr</artifactId>
 		</dependency>
 
-		<!-- Spring Redis -->
-		<dependency>
-			<groupId>org.springframework.session</groupId>
-			<artifactId>spring-session-data-redis</artifactId>
-			<version>1.0.1.RELEASE</version>
-		</dependency>
-
-
 		<!-- Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>
@@ -81,26 +73,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-
-		<!-- Spring Security OAuth2 -->
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.security.oauth</groupId>-->
-			<!--<artifactId>spring-security-oauth2</artifactId>-->
-		<!--</dependency>-->
-
-		<!-- SendGrid -->
-		<!--<dependency>-->
-			<!--<groupId>com.sendgrid</groupId>-->
-			<!--<artifactId>sendgrid-java</artifactId>-->
-			<!--<version>2.2.2</version>-->
-		<!--</dependency>-->
-
-
-		<dependency>
-			<groupId>com.github.kstyrc</groupId>
-			<artifactId>embedded-redis</artifactId>
-			<version>0.6</version>
 		</dependency>
 
 		<!-- Spring Starter Test -->
@@ -116,13 +88,6 @@
 			<artifactId>postgresql</artifactId>
 			<version>9.4-1206-jdbc42</version>
 		</dependency>
-
-		<!-- In memory db, no config needed, just uncomment to use -->
-		<!--<dependency>-->
-			<!--<groupId>org.hsqldb</groupId>-->
-			<!--<artifactId>hsqldb</artifactId>-->
-			<!--<scope>runtime</scope>-->
-		<!--</dependency>-->
 
 	</dependencies>
 
