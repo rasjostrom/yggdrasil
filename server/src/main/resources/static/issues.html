@@ -1,53 +1,53 @@
 <md-tabs class="" md-selected="issueTabIndex" md-align-tabs="bottom" flex="" >
-  <md-tab id="issueTab1" md-on-select="switchIssueMode($index)">
-    <md-tab-label class="md-warn">View</md-tab-label>
-    <md-tab-body>
-      <h2 style="color: #34495e; margin-left: 1em;" flex=""> Issues  </h2>
-      <md-divider></md-divider>
-      <md-subheader> {{ currentFeature.description }} </md-subheader>
-      
-      <md-content class="content-box" flex="" layout-padding="">
-	<md-list ng-cloak>
-	  <md-list-item ng-repeat="issue in currentFeature.issues">
-	    <p> {{ issue.description }} </p>
-	    <md-checkbox md-no-ink class="md-primary" ng-click="toggleIssue(issue)" ng-checked="issue.status">
-	    </md-checkbox>
-	  </md-list-item>
-	</md-list>
-      </md-content>
-    </md-tab-body>
-  </md-tab>
-  
-  <md-tab id="issueTab2" md-on-select="switchIssueMode($index)">
-    <md-tab-label class="md-warn">Edit</md-tab-label>
-    <md-tab-body>
-      <form name="newIssueForm">
-	<md-input-container class="md-block" layout="row">
-	  <div flex>
-	    <label>New Issue</label>
-	    <input md-maxlength="50" ng-model="newIssue" required="required">
-	  </div>
-	  <div flex>
-	    <md-button class="md-raised" ng-click="addIssue(newIssue)">Add</md-button>
-	  </div>
-	</md-input-container>
-      </form>
-      
-      <md-subheader class="md-no-sticky">
-	Edit Issues
-      </md-subheader>
-      <md-divider></md-divider>
+    <md-tab id="issueTab1" md-on-select="switchIssueMode($index)">
+        <md-tab-label class="md-warn">View</md-tab-label>
+        <md-tab-body>
+            <h2 style="color: #34495e; margin-left: 1em;" flex=""> Issues  </h2>
+            <md-divider></md-divider>
+            <md-subheader> {{ currentFeature.description }} </md-subheader>
 
-      <md-content class="issues-box" flex="" layout-padding="">
-	<md-list ng-cloak>
-	  <md-list-item ng-repeat="issue in currentFeature.issues" ng-click="deleteIssue(issue)">
-	    <p> {{ issue.description }} </p>
-	    </md-checkbox>
-	  </md-list-item>
-	</md-list>
-      </md-content>
+            <md-content class="content-box" flex="" layout-padding="">
+                <md-list ng-cloak>
+                    <md-list-item ng-repeat="issue in currentFeature.issues">
+                        <p> {{ issue.description }} </p>
+                        <md-checkbox md-no-ink class="md-primary" ng-click="toggleIssue(issue)" ng-checked="issue.status">
+                        </md-checkbox>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </md-tab-body>
+    </md-tab>
 
-      <md-divider></md-divider>
-    </md-tab-body>
-  </md-tab>
+    <md-tab id="issueTab2" md-on-select="switchIssueMode($index)">
+        <md-tab-label class="md-warn">Edit</md-tab-label>
+        <md-tab-body>
+            <form name="newIssueForm">
+                <md-input-container class="md-block" layout="row">
+                    <div flex>
+                        <label>New Issue</label>
+                        <input md-maxlength="50" ng-model="newIssue" required="required">
+                    </div>
+                    <div flex>
+                        <md-button class="md-raised" ng-click="addIssue(newIssue)">Add</md-button>
+                    </div>
+                </md-input-container>
+            </form>
+
+            <md-subheader class="md-no-sticky">
+                Edit Issues
+            </md-subheader>
+            <md-divider></md-divider>
+
+            <md-content class="issues-box" flex="" layout-padding="">
+                <md-list ng-cloak>
+                    <md-list-item ng-repeat="issue in currentFeature.issues" ng-click="deleteIssue(issue)">
+                        <p> {{ issue.description }} </p>
+                        </md-checkbox>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+
+            <md-divider></md-divider>
+        </md-tab-body>
+    </md-tab>
 </md-tabs>

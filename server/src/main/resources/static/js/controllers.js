@@ -3,7 +3,6 @@ angular.module('yggdrasil.controllers', [])
     .controller('sidenavCtrl', function($scope, $http, $mdDialog, $window) {
         var allProjects = [];
 
-        $scope.xauthtoken = "";
         $scope.loggedin = false;
 
         $scope.user = {
@@ -11,28 +10,33 @@ angular.module('yggdrasil.controllers', [])
             password: ''
         };
 
+        $scope.users = [];
+
+        $http({
+            method: 'GET',
+            url: '/users'
+        }).then(function successCallback(response) {
+            $scope.users = response.data;
+            console.log(response);
+            console.log($scope.users);
+        }, function errorCallback(response) {
+            console.log("Error fetching users data from DB.");
+        });
+
 
         $scope.login = function() {
-            var headers = $scope.user.name && $scope.user.password ? {
-                authorization : "Basic "
-                + btoa($scope.user.name + ":"
-                    + $scope.user.password)
-            } : {};
-            $http.get('/projects', {
-                headers : headers
-            }).
-                success(function(data, status, headers, config) {
-                    $scope.xauthtoken = headers('x-auth-token');
-                    console.log($scope.xauthtoken);
+            for (var i = 0; i < $scope.users.length; i++){
+                console.log($scope.users[i]);
+                if ($scope.users[i].username == $scope.user.name && $scope.users[i].password == $scope.user.password){
                     $scope.loggedin = true;
-                    // this callback will be called asynchronously
-                    // when the response is available
-                })
-                .error(function(data, status, headers, config) {
-                    // called asynchronously if an error occurs
-                    // or server returns response with an error status.
-                });
+                }
+            }
         };
+
+        $scope.logout = function(){
+            $scope.loggedin = false;
+        };
+
 
 
         $scope.currentProject = {title: 'Project Title',
@@ -45,10 +49,7 @@ angular.module('yggdrasil.controllers', [])
         // Fetch all projects from DB and save to 'allProjects'
         $http({
             method: 'GET',
-            url: '/projects',
-            headers: {
-                "x-auth-token": $scope.xauthtoken
-            }
+            url: '/projects'
         }).then(function successCallback(response) {
             $scope.allProjects = response.data;
         }, function errorCallback(response) {
@@ -71,18 +72,7 @@ angular.module('yggdrasil.controllers', [])
         var updateProject = function() {
             var putUrl = "/projects/" + $scope.currentProject.id;
 
-            $http.put(
-                {
-                    method: 'PUT',
-                    url: putUrl,
-                    headers: {
-                        "x-auth-token": $scope.xauthtoken
-                    },
-                    data: $scope.currentProject
-                }
-
-                //putUrl, $scope.currentProject
-            ).then(function successCallback(response) {
+            $http.put(putUrl, $scope.currentProject).then(function successCallback(response) {
                 console.log("update successful");
             }, function errorCallback(response) {
                 console.log("Error while updating project.");
